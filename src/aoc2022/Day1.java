@@ -12,7 +12,7 @@ public class Day1 {
         int thirdHighestCals = 0;
         int accumulator = 0;
 
-        try (BufferedReader br = new BufferedReader(new FileReader("src/aoc2022.input/aoc2022.Day1.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/aoc2022/input/Day1.txt"))) {
             String line;
             while (true) {
                 line = br.readLine();
