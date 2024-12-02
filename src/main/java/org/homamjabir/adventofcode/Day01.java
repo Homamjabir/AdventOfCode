@@ -55,7 +55,7 @@ public class Day01 {
     }
 
     public static void main(String[] args) throws IOException {
-        List<String> input = FileReaderUtil.readLinesFromFile("input1.txt");
+        List<String> input = FileReaderUtil.readLinesFromFile("input01.txt");
         part1(input);
         part2(input);
     }
