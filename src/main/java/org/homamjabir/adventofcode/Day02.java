@@ -21,7 +21,7 @@ public class Day02 {
 
     }
 
-    public static void part2(List<String> input) {
+    public static void part2_bruteForce(List<String> input) {
         int acc = 0;
 
         for(String line : input) {
@@ -38,10 +38,8 @@ public class Day02 {
                             faultyLevel[index++] = level[j];
                         }
                     }
-
-                    isLineSafe = isLineSafe(faultyLevel);
-
-                    if(isLineSafe) {
+                    if(isLineSafe(faultyLevel)) {
+                        isLineSafe = true;
                         break;
                     }
                 }
@@ -54,14 +52,14 @@ public class Day02 {
         System.out.println("Part 2: " + acc);
     }
 
-    private static boolean isLineSafe(String[] levels) {
+    private static boolean isLineSafe(String[] level) {
         boolean isLineSafe = true;
 
-        boolean isLineIncreasing = (Integer.parseInt(levels[0]) < Integer.parseInt(levels[1]));
+        boolean isLineIncreasing = (Integer.parseInt(level[0]) < Integer.parseInt(level[1]));
 
-        for(int i = 0; i < levels.length-1; i++) {
-            int current = Integer.parseInt(levels[i]);
-            int next = Integer.parseInt(levels[i+1]);
+        for(int i = 0; i < level.length-1; i++) {
+            int current = Integer.parseInt(level[i]);
+            int next = Integer.parseInt(level[i+1]);
             int delta = Math.abs(current - next);
 
             if((delta > 3 || delta == 0) || current < next != isLineIncreasing) {
@@ -76,6 +74,6 @@ public class Day02 {
     public static void main(String[] args) throws IOException {
         List<String> input = FileReaderUtil.readLinesFromFile("input02.txt");
         part1(input);
-        part2(input);
+        part2_bruteForce(input);
     }
 }
