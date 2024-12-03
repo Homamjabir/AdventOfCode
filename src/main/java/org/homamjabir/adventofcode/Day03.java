@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Day03 {
 
@@ -19,8 +20,7 @@ public class Day03 {
 
             while (matcher.find()) {
                 String[] nums = matcher.group()
-                        .replace("mul", "")
-                        .replace("(", "")
+                        .replace("mul(", "")
                         .replace(")", "")
                         .split(",");
                 acc += Integer.parseInt(nums[0]) * Integer.parseInt(nums[1]);
@@ -58,9 +58,30 @@ public class Day03 {
         System.out.println("Part 2: " + acc);
     }
 
+    public static void part2_shorter(List<String> input) {
+        int acc = 0;
+
+        String result = input.stream().collect(Collectors.joining()).replaceAll("don't\\(\\).*?do\\(\\)", "");
+
+        String regex = "mul\\(\\d{1,3},\\d{1,3}\\)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(result);
+
+        while (matcher.find()) {
+            String[] nums = matcher.group()
+                    .replace("mul(", "")
+                    .replace(")", "")
+                    .split(",");
+            acc += Integer.parseInt(nums[0]) * Integer.parseInt(nums[1]);
+        }
+
+        System.out.println("Part 2: " + acc);
+    }
+
     public static void main(String[] args) throws IOException {
         List<String> input = FileReaderUtil.readLinesFromFile("input03.txt");
         part1(input);
         part2(input);
+        part2_shorter(input);
     }
 }
