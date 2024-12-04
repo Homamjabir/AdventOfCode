@@ -22,61 +22,25 @@ public class Day04 {
                 char currentChar = line.charAt(i);
                 if (currentChar == 'X' || currentChar == 'S') {
                     String searchString = currentChar == 'X' ? "XMAS" : "SAMX";
-                    acc += horizontalCheck(line, i, searchString)
-                            + verticalCheck(input, rowIndex, i, searchString)
-                            + diagonalCheck_1(input, rowIndex, i, searchString)
-                            + diagonalCheck_2(input, rowIndex, i, searchString);
+                    acc += checkDirection(input, rowIndex, i, searchString, 0, 1)
+                            + checkDirection(input, rowIndex, i, searchString, 1, 0)
+                            + checkDirection(input, rowIndex, i, searchString, 1, 1)
+                            + checkDirection(input, rowIndex, i, searchString, 1, -1);
                 }
             }
         }
         System.out.println("Part 1: " + acc);
     }
 
-    private static int horizontalCheck(String line, int startCol, String searchString) {
+    private static int checkDirection(List<String> lines, int startRow, int startCol, String searchString, int rowInc, int colInc) {
         StringBuilder sb = new StringBuilder(4);
+        int row = startRow;
+        int col = startCol;
 
-        while (startCol < line.length() && sb.length() != 4 && searchString.startsWith(sb.toString())) {
-            sb.append(line.charAt(startCol));
-
-            startCol++;
-        }
-
-        return searchString.contentEquals(sb) ? 1 : 0;
-    }
-
-    private static int verticalCheck(List<String> lines, int startRow, int startCol, String searchString) {
-        StringBuilder sb = new StringBuilder(4);
-
-        while (startRow < lines.size() && sb.length() != 4 && searchString.startsWith(sb.toString())) {
-            sb.append(lines.get(startRow).charAt(startCol));
-            
-            startRow++;
-        }
-
-        return searchString.contentEquals(sb) ? 1 : 0;
-    }
-
-    private static int diagonalCheck_1(List<String> lines, int startRow, int startCol, String searchString) {
-        StringBuilder sb = new StringBuilder(4);
-
-        while (startRow < lines.size() && startCol < lines.get(startRow).length() && sb.length() != 4 && searchString.startsWith(sb.toString())) {
-            sb.append(lines.get(startRow).charAt(startCol));
-
-            startRow++;
-            startCol++;
-        }
-
-        return searchString.contentEquals(sb) ? 1 : 0;
-    }
-
-    private static int diagonalCheck_2(List<String> lines, int startRow, int startCol, String searchString) {
-        StringBuilder sb = new StringBuilder(4);
-
-        while (startRow < lines.size() && 0 <= startCol && sb.length() != 4 && searchString.startsWith(sb.toString())) {
-            sb.append(lines.get(startRow).charAt(startCol));
-
-            startRow++;
-            startCol--;
+        while (row < lines.size() && col >= 0 && col < lines.get(row).length() && sb.length() != 4 && searchString.startsWith(sb.toString())) {
+            sb.append(lines.get(row).charAt(col));
+            row += rowInc;
+            col += colInc;
         }
 
         return searchString.contentEquals(sb) ? 1 : 0;
