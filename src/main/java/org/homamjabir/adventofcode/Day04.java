@@ -3,13 +3,7 @@ package org.homamjabir.adventofcode;
 import org.homamjabir.adventofcode.util.FileReaderUtil;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class Day04 {
 
@@ -47,6 +41,22 @@ public class Day04 {
     }
 
     public static void part2(List<String> input) {
+        int acc = 0;
+
+        for (int rowIndex = 1; rowIndex < input.size() - 1; rowIndex++) {
+            String line = input.get(rowIndex);
+            for (int i = 1; i < line.length() - 1; i++) {
+                if (line.charAt(i) == 'A' && (
+                        input.get(rowIndex - 1).charAt(i - 1) == 'M' && input.get(rowIndex + 1).charAt(i + 1) == 'S' ||
+                                input.get(rowIndex - 1).charAt(i - 1) == 'S' && input.get(rowIndex + 1).charAt(i + 1) == 'M')
+                        &&
+                        (input.get(rowIndex + 1).charAt(i - 1) == 'M' && input.get(rowIndex - 1).charAt(i + 1) == 'S' ||
+                                input.get(rowIndex + 1).charAt(i - 1) == 'S' && input.get(rowIndex - 1).charAt(i + 1) == 'M')) {
+                    acc++;
+                }
+            }
+        }
+        System.out.println("Part 2: " + acc);
     }
 
     public static void main(String[] args) throws IOException {
