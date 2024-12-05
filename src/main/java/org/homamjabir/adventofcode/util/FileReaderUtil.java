@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileReaderUtil {
-    static String inputFilesBasePath = "src/main/resources/inputs/";
+
+    private FileReaderUtil() {}
+
+    private static String inputFilesBasePath = "src/main/resources/inputs/";
 
     public static List<String> readLinesFromFile(String filename) throws IOException {
         List<String> input = new ArrayList<>();
