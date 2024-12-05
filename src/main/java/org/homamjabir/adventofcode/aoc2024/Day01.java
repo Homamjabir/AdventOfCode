@@ -1,4 +1,4 @@
-package org.homamjabir.adventofcode;
+package org.homamjabir.adventofcode.aoc2024;
 
 import org.homamjabir.adventofcode.util.FileReaderUtil;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Day01 {
 
-    public static void part1(List<String> input) {
+    private static void part1(List<String> input) {
         List<Integer> list1 = new ArrayList<>();
         List<Integer> list2 = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class Day01 {
 
     }
 
-    public static void part2(List<String> input) {
+    private static void part2(List<String> input) {
         List<String> list1 = new ArrayList<>();
         HashMap<String, Integer> map = new HashMap<>();
 
@@ -55,7 +55,7 @@ public class Day01 {
     }
 
     public static void main(String[] args) throws IOException {
-        List<String> input = FileReaderUtil.readLinesFromFile("input01.txt");
+        List<String> input = FileReaderUtil.readLinesFromFile("/2024/input01.txt");
         part1(input);
         part2(input);
     }

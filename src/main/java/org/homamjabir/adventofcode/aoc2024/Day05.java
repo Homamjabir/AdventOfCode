@@ -1,4 +1,4 @@
-package org.homamjabir.adventofcode;
+package org.homamjabir.adventofcode.aoc2024;
 
 import org.homamjabir.adventofcode.util.FileReaderUtil;
 
@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Day05 {
 
-    public static void part1(List<String> input) {
+    private static void part1(List<String> input) {
         Set<String> set = new HashSet<>();
         int acc = 0;
         for (String s : input) {
@@ -35,7 +35,7 @@ public class Day05 {
         System.out.println("Part 1: " + acc);
     }
 
-    public static void part2(List<String> input) {
+    private static void part2(List<String> input) {
         Set<String> set = new HashSet<>();
         int acc = 0;
         for (String s : input) {
@@ -63,7 +63,7 @@ public class Day05 {
     }
 
     public static void main(String[] args) throws IOException {
-        List<String> input = FileReaderUtil.readLinesFromFile("input05.txt");
+        List<String> input = FileReaderUtil.readLinesFromFile("/2024/input05.txt");
         part1(input);
         part2(input);
     }

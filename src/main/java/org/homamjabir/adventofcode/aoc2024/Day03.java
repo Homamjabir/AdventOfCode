@@ -1,4 +1,4 @@
-package org.homamjabir.adventofcode;
+package org.homamjabir.adventofcode.aoc2024;
 
 import org.homamjabir.adventofcode.util.FileReaderUtil;
 
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class Day03 {
 
-    public static void part1(List<String> input) {
+    private static void part1(List<String> input) {
         int acc = 0;
         for (String s : input) {
 
@@ -29,7 +29,7 @@ public class Day03 {
         System.out.println("Part 1: " + acc);
     }
 
-    public static void part2(List<String> input) {
+    private static void part2(List<String> input) {
         int acc = 0;
         boolean flag = true;
 
@@ -58,7 +58,7 @@ public class Day03 {
         System.out.println("Part 2: " + acc);
     }
 
-    public static void part2_shorter(List<String> input) {
+    private static void part2_shorter(List<String> input) {
         int acc = 0;
 
         String result = input.stream().collect(Collectors.joining()).replaceAll("don't\\(\\).*?do\\(\\)", "");
@@ -79,7 +79,7 @@ public class Day03 {
     }
 
     public static void main(String[] args) throws IOException {
-        List<String> input = FileReaderUtil.readLinesFromFile("input03.txt");
+        List<String> input = FileReaderUtil.readLinesFromFile("/2024/input03.txt");
         part1(input);
         part2(input);
         part2_shorter(input);

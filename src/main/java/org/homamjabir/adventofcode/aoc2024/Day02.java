@@ -1,4 +1,4 @@
-package org.homamjabir.adventofcode;
+package org.homamjabir.adventofcode.aoc2024;
 
 import org.homamjabir.adventofcode.util.FileReaderUtil;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Day02 {
 
-    public static void part1(List<String> input) {
+    private static void part1(List<String> input) {
         int acc = 0;
 
         for(String line : input) {
@@ -21,7 +21,7 @@ public class Day02 {
 
     }
 
-    public static void part2_bruteForce(List<String> input) {
+    private static void part2_bruteForce(List<String> input) {
         int acc = 0;
 
         for(String line : input) {
@@ -70,7 +70,7 @@ public class Day02 {
     }
 
     public static void main(String[] args) throws IOException {
-        List<String> input = FileReaderUtil.readLinesFromFile("input02.txt");
+        List<String> input = FileReaderUtil.readLinesFromFile("/2024/input02.txt");
         part1(input);
         part2_bruteForce(input);
     }

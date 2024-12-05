@@ -1,4 +1,4 @@
-package org.homamjabir.adventofcode;
+package org.homamjabir.adventofcode.aoc2024;
 
 import org.homamjabir.adventofcode.util.FileReaderUtil;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Day04 {
 
-    public static void part1(List<String> input) {
+    private static void part1(List<String> input) {
         int acc = 0;
 
         for (int rowIndex = 0; rowIndex < input.size(); rowIndex++) {
@@ -40,7 +40,7 @@ public class Day04 {
         return searchString.contentEquals(sb) ? 1 : 0;
     }
 
-    public static void part2(List<String> input) {
+    private static void part2(List<String> input) {
         int acc = 0;
 
         for (int rowIndex = 1; rowIndex < input.size() - 1; rowIndex++) {
@@ -60,7 +60,7 @@ public class Day04 {
     }
 
     public static void main(String[] args) throws IOException {
-        List<String> input = FileReaderUtil.readLinesFromFile("input04.txt");
+        List<String> input = FileReaderUtil.readLinesFromFile("/2024/input04.txt");
         part1(input);
         part2(input);
     }
