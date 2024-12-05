@@ -44,7 +44,6 @@ public class Day02 {
                     }
                 }
             }
-
             if(isLineSafe) {
                 acc++;
             }
@@ -67,7 +66,6 @@ public class Day02 {
                 break;
             }
         }
-
         return isLineSafe;
     }
 

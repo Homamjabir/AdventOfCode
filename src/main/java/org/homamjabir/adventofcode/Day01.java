@@ -9,9 +9,6 @@ import java.util.List;
 
 public class Day01 {
 
-    /**
-     * Separates the input into two lists and sorts them, then compares the abs between each element
-     */
     public static void part1(List<String> input) {
         List<Integer> list1 = new ArrayList<>();
         List<Integer> list2 = new ArrayList<>();
@@ -33,9 +30,6 @@ public class Day01 {
 
     }
 
-    /**
-     * Separates the input into two lists and sorts them, then multiple
-     */
     public static void part2(List<String> input) {
         List<String> list1 = new ArrayList<>();
         HashMap<String, Integer> map = new HashMap<>();
