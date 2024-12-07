@@ -66,7 +66,6 @@ public class Day06 {
                 }
             }
             if(flag) break;
-
         }
 
         int xDirArr[] = {-1, 0, 1, 0};
@@ -85,15 +84,67 @@ public class Day06 {
                 charArray[x][y] = 'X';
                 acc++;
             }
-            x += xDirArr[dirArrIndex++];
-            y += yDirArr[dirArrIndex++];
+            x += xDirArr[dirArrIndex];
+            y += yDirArr[dirArrIndex];
         }
 
         System.out.println("Part 1: " + acc);
     }
 
     private static void part2(List<String> input) {
+        char[][] charArray = input.stream()
+                .map(String::toCharArray)
+                .toArray(char[][]::new);
+
+        int x = 0;
+        int y = 0;
+
+        boolean flag = false;
+        for(int i = 0; i < charArray.length; i++) {
+            for (int j = 0; j < charArray[i].length; j++) {
+                if (charArray[i][j] == '^') {
+                    x = i;
+                    y = j;
+                    flag = true;
+                    break;
+                }
+            }
+            if(flag) break;
+        }
+
+        int[] xDirArr = {-1, 0, 1, 0};
+        int[] yDirArr = {0, 1, 0, -1};
+        int dirArrIndex = 0;
+
         int acc = 0;
+        for(int i = 0; i < charArray.length; i++) {
+            for (int j = 0; j < charArray[i].length; j++) {
+                charArray[x][y] = '#';
+                int test = 0;
+                while (x >= 0 && x < input.size() && y >= 0 && y < input.get(0).length()) {
+                    if (charArray[x][y] == '#') {
+                        x -= xDirArr[dirArrIndex];
+                        y -= xDirArr[dirArrIndex];
+
+                        dirArrIndex = dirArrIndex == 3 ? 0 : dirArrIndex + 1;
+
+                    } else if (charArray[x][y] != ('X')) {
+                        charArray[x][y] = 'X';
+                    } else if (charArray[x][y] == ('X')) {
+                        test++;
+                    }
+                    if (test == 10000) {
+                        break;
+                    }
+                    x += xDirArr[dirArrIndex++];
+                    y += yDirArr[dirArrIndex++];
+                }
+                charArray[x][y] = input.get(x).charAt(y);
+                if(test == 10000) {
+                    acc++;
+                }
+            }
+        }
         System.out.println("Part 2: " + acc);
     }
 
