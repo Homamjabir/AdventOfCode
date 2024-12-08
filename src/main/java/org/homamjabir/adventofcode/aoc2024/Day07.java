@@ -3,7 +3,8 @@ package org.homamjabir.adventofcode.aoc2024;
 import org.homamjabir.adventofcode.util.FileReaderUtil;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Day07 {
 
