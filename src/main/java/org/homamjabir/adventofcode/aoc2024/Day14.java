@@ -151,7 +151,6 @@ public class Day14 {
 
     public static void main(String[] args) throws IOException {
         List<String> input = FileReaderUtil.readLinesFromFile("/2024/input14.txt");
-        Day14 day14 = new Day14();
 
         List<Guard> guards = new ArrayList<>();
 
